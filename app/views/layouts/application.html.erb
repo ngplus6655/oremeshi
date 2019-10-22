@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @page_title + ' - OREMESHI' %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <%= render "shared/header" %>
+    <div class="container row mx-auto mt-2 p-0">
+      <div class="main-wrapper-wrapper col-lg-9 bg-white rounded p-0">
+        <% if flash[:notice] %>
+        <div class="flash text-danger"><%= flash[:notice] %></div>
+        <% end %>
+        <div class="main-wrapper">
+          <main>  
+            <%= yield %>
+          </main>
+        </div>  
+      </div> 
+      <div class="col-lg-3 mt-lg-0 mt-4 p-0">
+          <%= render 'shared/sidebar' %>
+          <div class="mt-4"></div>
+          <%= render 'shared/sidebar_menu' %>
+          <div class="mt-4"></div>
+          <%= render 'shared/sidebar_contact' %>
+      </div>
+    </div> 
+  </body>
+</html>

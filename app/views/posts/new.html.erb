@@ -1,0 +1,9 @@
+<% @page_title = "俺飯の投稿" %>
+
+<%= render "shared/errors", obj: @post %>
+<h6 class="text-center font-weight-bold my-3"><%= @page_title %><h6>
+<div class="bg-white container py-4">
+<%= form_for @post, html: {:class => "text-center font-weight-bold my-3" } do |form| %>
+  <%= render 'shared/form_post', form: form %>
+<% end %>
+</div>

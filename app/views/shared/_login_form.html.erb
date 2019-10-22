@@ -1,0 +1,19 @@
+<%= form_tag :session, id: "login-form" do %>
+  <% if flash[:alert] %>
+    <p class='text-danger'><%= flash[:alert] %></p>
+  <% end %>   
+    <div class="mt-4">
+      <label class="login-form-label">ログインID：</label>
+      <input type="text" name="login_id" class="login-form-text">
+    </div>
+    <div class="mt-2">
+      <label class="login-form-label">パスワード：</label>
+      <input type="password" name="password" class="login-form-text">
+    </div>
+    <div class="login-btn-wrap">
+      <input type="submit" value="ログイン" class="login-button mb-3" >
+    </div>
+<% end %>
+<div class="link-to-users-new mb-5">
+  <%= link_to "新規ユーザ登録", "/users/new" %>
+</div>

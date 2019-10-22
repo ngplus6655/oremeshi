@@ -1,0 +1,60 @@
+<div class="py-5 bg-white container">
+  <div class="user_image_bg_main_wrapper mb-5">
+    <div class="user_image_bg_main mx-auto" style="background-image: url(/assets/sk.jpg);"></div>
+  </div>
+  <div class="container">
+    <h4 class="mt-2 mb-3 font-weight-bold"><%= @user.name %></h4>
+      <% if @user.taste == 1 %>
+        <div class="user_taste sweet"><i class="fas fa-cookie-bite"></i>甘党</div>
+      <% elsif @user.taste == 2 %>
+        <div class="user_taste hot"><i class="fab fa-hotjar"></i>辛党</div>
+      <% end %> 
+      <% if controller.kind_of?(AccountsController) %>
+          <dl>
+            <dt>ログインID</dt>
+            <dd><%= @user.login_id %></dd>
+          </dl>
+      <% end %>
+      <dl>
+        <dt>年齢</dt>
+        <dd><%= @user.age %>歳</dd>
+      </dl>
+      <dl>
+        <dt>性別</dt>
+        <% if @user.gender == 1 %>
+          <dd>男性</dd>
+        <% elsif @user.gender == 2 %>
+          <dd>女性</dd>
+        <% else %>
+          <dd>内緒だよ</dd>
+        <% end %>  
+      </dl>
+      <dl>
+        <dt>誕生日</dt>
+        <dd><%= @user.birthday.strftime("%m月%d日") %></dd>
+      </dl>
+      <dl>
+        <dt>都道府県</dt>
+        <dd><%= @user.prefecture %><dd>
+      </dl>
+      <dl>
+        <dt>自己紹介</dt>
+        <dd><%= @user.introduce %></dd>
+      </dl>
+      <% if controller.kind_of?(AccountsController) %>
+      <dl>
+        <dt>編集</dt>
+        <dd><%= link_to "プロフィールの編集", :edit_account %></dd>
+        <dd><%= link_to "パスワードの再設定", :edit_password %></dd>
+      </dl>
+      <% end %>
+      <% if current_user&.admin == true %>
+        <dl>
+          <dt>編集(管理者)</dt>
+          <dd><%= link_to "プロフィールの編集", :edit_account %></dd>
+          <dt>削除(管理者)</dt>
+          <dd><%= link_to "ユーザの削除", @user, :method => :delete %></dd>
+        </dl>
+      <% end %>
+  </div>
+</div>

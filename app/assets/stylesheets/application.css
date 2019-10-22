@@ -1,0 +1,435 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require bootstrap/scss/bootstrap
+ */
+
+html{
+  font-size: 100%;
+}
+
+body{
+  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+  background: #f4f4f4 !important;
+  padding-bottom: 100px;
+}
+
+
+/* /////header///////////////////////////////////////////////////////////////////////// */
+
+a.logo{
+  font-size: 2.3rem;  
+  font-weight: bold;
+  color: #222;
+}
+
+li.nav-item{
+  color: #333;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+a.nav-link{
+  color: #333;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+a.nav-link:hover{
+  color: #666 !important;
+}
+
+a.navbar-brand:hover{
+  color: #555 !important;
+}
+
+a.nav-link.btn{
+  color: white !important;
+  font-size: 1.1rem;
+  margin-left: 1.5rem !important;
+  background-color: #333;
+  display: block !important;
+  padding: 5px 7px;
+}
+
+a.nav-link.btn:hover{
+  opacity: 0.8;
+}
+
+div.flash{
+  font-size: 0.8rem;
+}
+/* ///////////body/////////////////////////////////////////////////////////////////// */
+
+div.main-wrapper-wrapper{
+  border: 2px solid #eee;
+  background-color:#fff200 !important;
+}
+
+div.main-wrapper-wrapper{
+  height: 100% !important;
+}
+
+div.flash{
+  text-align: center;
+  font-size: 1rem;
+  padding: 20px 0 20px;
+  color: #222;
+}
+
+/* ///////////sidebar///////////////////////////////////////////////////////////////// */
+
+div.sidebar-title{
+  background-color: #fff200;
+  font-size: 1rem;
+  padding: 5px 10px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+div.user_image_bg{
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center center;
+  border: 3px solid #ddd;
+}
+
+div.side-wrapper{
+  border: 2px solid #eee;
+  background-color: #fff;
+}
+
+h4.side_menu_user{
+  font-size: 1rem;
+}
+
+li.side-menu > a{
+  font-size: 1rem;
+  color: #444;
+  text-decoration: none;
+}
+
+li.side-menu > a:hover{
+  opacity: 0.7;
+}
+
+li.side-menu{
+  padding-bottom: 5px !important;
+}
+
+li.side-menu > .side-text{
+  font-size: 1rem;
+}
+
+/* //////posts#index///////////////////////////////////////////////////////////////////////////////////// */
+
+div.post-wrapper{
+  border: 0.5px solid #ddd;
+}
+
+h3.post_title{
+  font-size: 1rem;
+}
+
+div.posts-index-user-image{
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center center;
+}
+
+span.review{
+  font-size: 1.2rem;
+  color: rgb(253, 179, 68);
+}
+
+
+span.price{
+  font-size: 1.2rem;
+  color: rgb(2, 182, 56);
+}
+
+h6.user_name{
+  display: inline-block;
+  margin-left: 1.3rem;
+  font-size: 1rem;
+}
+
+h6.user_name a{
+  color: #333;
+}
+
+div.post_image{
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: 50%;
+}
+
+
+
+
+p.link-to-show > a{
+  font-size: 1rem;
+}
+
+p.link-to-show{
+  margin-bottom: 0;
+}
+
+p.post_time{
+  font-size: 0.9rem;
+}
+
+div.user-image{
+  height: 50px;
+}
+
+div.pagination{
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+div.pagination > nav{
+ margin: 20px auto 50px;
+}
+
+div.pagination > nav > span > a{
+  color: #555;
+  margin: 0 5px;
+}
+
+/* //////////posts#show///////////////////////////////////////////////////////////////////////////////// */
+
+h6.posts_show_title.heading{
+  font-size: 1.3rem;
+  margin-top: 0;
+}
+
+div.post-show-image{
+  width: 100%;
+}
+
+
+p.posts-body{
+  font-size: 1rem;
+}
+
+h2.posts_show_title{
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+h6.heading{
+  font-size: 1rem;
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+h6.heading::after{
+  content: "";
+  display: block;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+h2.posts_user{
+  font-size: 1.5rem;
+  color: #777;
+}
+
+p.post_status{
+  margin-top: 40px;
+}
+
+
+div.show-user-image{
+  width: 200px;
+  height: 200px;
+  background-position: center center;
+  background-size: cover;
+  margin: 0 auto; 
+}
+
+p.link-to-user-show{
+  text-align: center;
+  width: 100%;
+}
+
+p.link-to-user-show > a{
+  font-size: 0.9rem;
+}
+
+p.post-user-introduce{
+  font-size: 1rem;
+  color: #777;
+}
+
+div.comment{
+  font-size: 1rem;
+}
+
+
+div.show-commented-user-image{
+  width: 40px;
+  height: 40px;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+.line-bc {
+  padding: 20px 10px;
+  margin: 15px auto;
+  text-align: right;
+  font-size: 14px;
+  background: #7da4cd;
+}
+
+/*以下、②左側のコメント*/
+.balloon6 {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.balloon6 .faceicon {
+  float: left;
+}
+
+.balloon6 .chatting {
+  width: 100%;
+  text-align: left;
+}
+
+.says {
+  display: inline-block;
+  position: relative; 
+  position: absolute;
+  left: 100px;
+  padding: 8px;
+  border-radius: 12px;
+  background: #edf1ee;
+  max-width: 70%;
+  margin-top: 40px;
+  word-wrap: break-word;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px; 
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.says p {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+
+h6.comment-user{
+  color: #777;
+  font-size: 1rem;
+}
+
+p.comment-body{
+  font-size: 1rem;
+  color: #777;
+}
+
+div.create-time{
+  font-size: 1rem;
+}
+
+.no-gutters {
+  margin:0;
+  padding:0;
+}
+ 
+.no-gutters > .col,
+.no-gutters > [class*="col-"] {
+  margin:0;
+  padding:0;
+}
+
+
+
+
+/* ///posts#new/////////////////////////////////////////////////////////////////////////////////////// */
+
+div.post-form-wrap{
+  font-size: 0.8rem;
+}
+
+div.index-user{
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+
+div.user_image_bg_main{
+  width: 200px !important;
+  height: 200px;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+div.user_taste{
+  font-size: 0.9rem;
+  float: right;
+}
+
+div.user_taste.sweet{
+  color: rgb(255, 102, 128);
+}
+
+div.user_taste.hot{
+  color: red;
+}
+
+p.user_introduce{
+  font-size: 1rem !important;
+  font-weight: normal !important;
+  margin-bottom: 0;
+}
+/* ////////show/////////////////////////////////////////////////////////////////////// */
+
+
+
+
+
+
+
+/* ////////new///////////////////////////////////////////////////////////////////// */
+
+form.form_wrap{
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  background-color: white;
+}

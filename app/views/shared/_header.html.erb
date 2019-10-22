@@ -1,0 +1,23 @@
+<header>
+  <nav class="navbar navbar-expand-lg" style="background-color:#fff200;">
+    <div class="container">
+      <a class="navbar-brand logo" href="/"><i class="fas fa-utensils"></i>俺飯</a>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <% if current_user %>
+            <li class="nav-item">
+              <%= link_to "#{current_user.name}", "/account" , :class => "nav-link visible-lg" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "新規登録", "/users/new", :class => "nav-link visible-lg" %>
+            </li>
+          <% end %>
+          <li class="nav-item">
+            <%= link_to "俺飯を投稿する", "/posts/new", :class => "nav-link btn" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

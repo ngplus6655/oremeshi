@@ -1,0 +1,80 @@
+<% @page_title = @post.title %>
+
+<div class="">
+  <div class="description bg-white container pb-5">
+  <h6 class="heading pt-4 posts_show_title font-weight-bold"><%= @post.title %></h6>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= image_tag "sk.jpg", :width => "100%" %>
+      </div>
+      <div class="col-sm-6 mt-4 mt-sm-0">
+        <p class="posts-body"><%= simple_format @post.body %></p>
+      </div>
+    </div>
+    <div class="text-right">
+      <p class="post_status mb-0">
+        <span class="price">金額: <i class="fas fa-yen-sign"></i><%= @post.price %></span><br>
+        <span class="review">満足度: <i class="fas fa-star"></i><%= @post.review %></span><br>
+        <div class="mt-3 create-time"><%= @post.updated_at.strftime("%Y-%m-%d %H:%M") %></div><br>
+    <% if current_user == @post.author %>
+        <%= link_to "変更する", "/posts/#{@post.id}/edit" %><br>
+        <%= link_to "削除する", @post, :method => :delete %><br>
+    <% end %>
+      </p>
+    </div>
+    
+    <div class="post-under">
+    <h6 class="heading">コメント</h6>
+      <div class="line-bc">
+        <div class="comment container">
+          <div class="comment-index">
+            <% if @comments.present? %>
+              <% @comments.each do |comment| %>
+                <div class="balloon6 mb-5 clearfix">
+                  <div class="faceicon">
+                    <div class="text-center text-white"><%= comment.user.name %></div>
+                    <div class="show-commented-user-image" style="background-image: url(/assets/sk.jpg);"></div>
+                  </div>
+                  <div class="chatting">
+                    <div class="says">
+                      <p class="comment-body"><%= comment.content %></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="chatting text-left" style="width: 100%;">
+                <div class="says">
+                  <p class="comment-body">是非コメントしてみましょう(*´ω｀*)</p>
+                </div>
+              </div>
+              <div style="height: 150px;"></div>
+            <% end %>
+          </div>
+        </div>
+        <% if current_user %>
+          <%= render 'shared/errors', obj: @comment %>
+          <%= form_for @comment do |f| %>
+            <%= f.text_area :content, style: "width: 100%; height: 60px;" %>
+            <%= f.hidden_field :post_id, :value => @post.id %>
+            <%= f.submit "送信", class: "btn btn-primary" %>
+          <% end %>
+        <% else %>
+          <h5 class="text-center text-white">ログインするとコメントを残せますよ～</h5>
+        <% end %>
+      </div>
+    </div>
+    <h6 class="heading">投稿者</h6>
+    <div class="mt-5 mx-5 text-center">
+      <div class="show-user-image" style="background-image: url(/assets/sk.jpg);"></div>
+      <h2 class="posts_user mt-2 text-center"><%= @post.author.name %></h2>
+          <% if @post.author.taste == 1 %>
+            <div class="user_taste post-show-taste sweet"><i class="fas fa-cookie-bite"></i>甘党</div>
+          <% elsif @post.author.taste == 2 %>
+            <div class="user_taste post-show-taste hot"><i class="fab fa-hotjar"></i>辛党</div>
+          <% end %> 
+      <p class="post-user-introduce mt-5"><%= @post.author.introduce %></p> 
+      <p class="link-to-user-show"><%= link_to "ユーザー詳細ページへ", "/users/#{@post.author.id}" %></p>
+    </div>
+  </div>  
+</div>

@@ -1,0 +1,83 @@
+<div class="form-row container">
+  <div class="form-group col-lg-6">
+    <%= form.label :name %>
+    <%= form.text_field :name, :class => "form-control form-control-sm", :placeholder => "俺飯で使用する名前を入力してください。" %>
+  </div>
+  <div class="form-group col-lg-6">
+    <%= form.label :login_id  %>
+    <%= form.text_field :login_id, :class => "form-control form-control-sm", :placeholder => "半角英数字3文字以上20字以内。ログイン時に使います。メモしておいてください。" %>
+  </div>
+  <% if controller.controller_name == 'users' && controller.action_name == 'new' || controller.action_name == 'create' %>
+    <div class="form-group col-lg-12">
+      <%= form.label :password, "パスワード" %>
+      <%= form.password_field :password, :class  => "form-control form-control-sm", :placeholder => "半角英数字3文字以上20字以内。" %>
+    </div>
+    <div class="form-group col-lg-12">
+      <%= form.label :password_confirmation, "確認用パスワード" %>
+      <%= form.password_field :password_confirmation, :class  => "form-control form-control-sm", :placeholder => "確認用の入力欄です。もう一度同じ文字列を入力してください。" %>
+    </div>
+  <% end %>
+  <div class="form-group col-lg-6">
+    <%= form.label :gender %><br>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :gender, "1", :class => "form-check-input" %>
+      <%= form.label :gender, "男性", :value => "1", :class => "form-check-label" %>
+    </div>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :gender, "2", :class => "form-check-input"%>
+      <%= form.label :gender, "女性", :value => "2", :class => "form-check-label" %>
+    </div>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :gender, "3", :class => "form-check-input" %>
+      <%= form.label :gender, "秘密にしておく", :value => "3", :class => "form-check-label" %>
+    </div>
+  </div>
+  <div class="form-row col-lg-6">
+    <div class="form-group">
+      <%= form.label :birthday %><br>
+      <%= form.date_select  :birthday,
+                            :start_year => 1900,
+                            :end_year => (Time.now.year)
+       %>
+    </div>
+  </div>
+
+  <div class="form-group col-6">
+    <%= form.label :prefecture %><br>
+    <%= form.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name %>
+  </div>
+  <div class="form-group col-12">
+    <%= form.label :introduce  %>
+    <%= form.text_area :introduce, rows: 7, :class => "form-control form-control-sm", :placeholder => "好きな食べ物とか？自由に書いてください" %>
+  </div>
+  <div class="form-group col-lg-6">
+    <%= form.label :taste  %><br>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :taste, 1, :class => "form-check-input" %>
+      <%= form.label :taste, "甘党",  :class => "form-check-label" %>
+    </div>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :taste, 2, :class => "form-check-input"%>
+      <%= form.label :taste, "辛党",  :class => "form-check-label" %>
+    </div>
+  </div>
+  <div class="form-group col-12">
+    
+  </div>
+  <div class="form-group col-12">
+  </div>
+  <% if current_user&.admin == true %>
+      <div class="form-group col-12">
+        <%= form.label :admin %><br>
+        <div class="form-check form-check-inline">
+          <%= form.check_box :admin, :value => true, :class => "form-check-input" %>
+          <%= form.label :admin, "管理者", :class => "form-check-label" %>  
+        </div>
+      </div>
+  <% else %>
+      <%= form.hidden_field :admin, :value => false %>
+  <% end %>
+  <div class="ml-4">
+    <button type="submit" class="btn btn-primary">登録</button>
+  </div>
+</div>

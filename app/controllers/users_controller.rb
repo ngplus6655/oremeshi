@@ -1,0 +1,60 @@
+class UsersController < ApplicationController
+
+  before_action :admin_required, only: [:edit, :update, :destroy]
+
+  def index
+    @users = User.all.order(:name).page(params[:page]).per(20)
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
+    @posts = Post.where(user_id: params[:id]).order(updated_at: "DESC").page(params[:page]).per(12)
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      flash[:notice] = "ユーザの登録に成功しました。"
+      cookies.signed[:user_login_id] = @user.login_id
+      redirect_to "/account"
+    else
+      flash[:notice] = "ユーザの登録に失敗しました。"
+      render 'new'
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:notice] = "ユーザの編集に成功しました。"
+      redirect_to @user
+    else
+      flash[:notice] = "ユーザの編集に失敗しました。"
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "ユーザを削除しました。"
+    redirect_to '/users'
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :login_id, :password, :password_confirmation, :name, :picture, :gender, 
+                       :birthday, :prefecture, :introduce, :taste, :admin, :remove_picture)
+  end
+
+
+end

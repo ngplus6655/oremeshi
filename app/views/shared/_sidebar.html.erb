@@ -1,0 +1,7 @@
+<div class="side-wrapper rounded">
+  <div class="sidebar-title">User</div>
+  <div class="container">
+    <%= render "shared/login_form" unless current_user %>
+    <%= render "shared/sidebar_user" if current_user %>
+  </div>
+</div>

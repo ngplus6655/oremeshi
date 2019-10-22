@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー情報
+      post: 俺飯
+    attributes:
+      user:
+        name: ユーザー名
+        login_id: ログインID
+        age: 年齢
+        picture: プロフィール画像
+        gender: 性別
+        birthday: 誕生日
+        prefecture: 都道府県
+        introduce: 自己紹介文
+        taste: 味覚
+        admin: 管理者
+        current_password: 現在のパスワード
+        password: 新しいパスワード
+        password_confirmation: 新しいパスワードの確認
+      post:
+        title: タイトル
+        price: 金額
+        picture: 画像
+        review: 満足度
+        body: 感想
+        user_id: ユーザーID
+  errors:
+    messages:
+      blank_picture: "がアップロードされていません。"
+      wrong: がただしくありません。
+      mismatching: "が一致していません。"

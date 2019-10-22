@@ -1,0 +1,8 @@
+<% @page_title = "新規ユーザの登録" %>
+
+<%= render "shared/errors", obj: @user %>
+<h6 class="text-center font-weight-bold my-3"><%= @page_title %><h6>
+
+<%= form_for @user, html: {:class => "form_wrap pt-5 pb-5"} do |form|  %>
+  <%= render 'shared/form_user', form: form %>
+<% end %>
