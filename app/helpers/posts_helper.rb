@@ -4,7 +4,7 @@ module PostsHelper
     array = []
     while count <= 5
       array.push([count.round(1).to_s, count.round(1).to_s])
-      count = count + 0.1
+      count = count + 0.5
     end
     array
   end
@@ -15,6 +15,28 @@ module PostsHelper
       ["#{user.login_id}" , "#{user.id}"]
     end
     @user_ids
+  end
+
+  def create_review_star(post)
+    html = []
+    comp_star = post.review.to_i
+    harf_star = post.review%1
+    star_count = 0
+
+    comp_star.times do
+      html.push('<i class="fas fa-star"></i>')
+      star_count += 1
+    end
+    if harf_star == 0.5
+      html.push('<i class="fas fa-star-half-alt"></i>')
+      star_count += 1
+    end
+    rest_star = 5 - star_count
+    rest_star.times do
+      html.push('<i class="far fa-star"></i>')
+    end
+    star_icon = html.join
+    star_icon
   end
 
 end
