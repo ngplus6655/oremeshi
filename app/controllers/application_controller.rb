@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def login_required
     if current_user.nil?
-      flash["notice"] = "サイドバー(スマホの方はこのページの下)のフォームからログインすることで利用できます。"
+      flash["info"] = "サイドバー(スマホの方はこのページの下)のフォームからログインすることで利用できます。"
       redirect_to :root
     end
   end

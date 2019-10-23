@@ -1,7 +1,7 @@
 <% @page_title = @post.title %>
 
 <div class="">
-  <div class="description bg-white container pb-5">
+  <div class="description container pb-5 bg-white">
   <h6 class="heading pt-4 posts_show_title font-weight-bold"><%= @post.title %></h6>
     <div class="row no-gutters">
       <% if @post.images.attached? %>
@@ -16,7 +16,7 @@
         </div>
       <% end %>
       <div class="col-md-6 mt-4 mt-md-0 pl-4">
-        <p class="posts-body"><%= simple_format @post.body %></p>
+        <%= simple_format @post.body,  class: 'posts-body' %>
       </div>
     </div>
     <div class="text-right">
@@ -74,7 +74,7 @@
     </div>
     <h6 class="heading">投稿者</h6>
     <div class="mt-5 mx-5 text-center">
-      <div class="show-user-image" style="background-image: url(/assets/sk.jpg);"></div>
+      <div class="show-user-image" style="background-image: url(<%= avatar(@post.author) %>);"></div>
       <h2 class="posts_user mt-2 text-center"><%= @post.author.name %></h2>
           <% if @post.author.taste == 1 %>
             <div class="user_taste post-show-taste sweet"><i class="fas fa-cookie-bite"></i>甘党</div>

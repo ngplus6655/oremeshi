@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.author = current_user
     if @post.save
-      flash[:successs] = "俺飯の投稿に成功しました。"
+      flash[:success] = "俺飯の投稿に成功しました。"
       redirect_to @post
     else
       flash.now[:danger] = "俺飯の投稿に失敗しました。"
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy
-    flash[:success] = "#{@post.title} を削除しました。"
+    flash[:info] = "#{@post.title} を削除しました。"
     redirect_to "/users/#{current_user.id}"
   end
 

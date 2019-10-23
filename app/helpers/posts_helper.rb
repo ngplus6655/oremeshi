@@ -43,7 +43,7 @@ module PostsHelper
     if images.attached?
         rails_blob_url(images.first) 
     else
-        ("/assets/sk.jpg")
+        ("/assets/hakumai.png")
     end 
   end
 

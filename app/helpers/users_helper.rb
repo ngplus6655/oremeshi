@@ -1,10 +1,14 @@
 module UsersHelper
 
-  def avatar(avatar)
-    if avatar.attached?
-        rails_blob_url(avatar) 
+  def avatar(user)
+    if user.avatar.attached?
+        rails_blob_url(user.avatar) 
     else
-        ("/assets/sk.jpg")
+      if user.gender = 1
+        ("/assets/default.jpg")
+      else
+        ("/assets/default1.jpg")
+      end 
     end 
   end
 

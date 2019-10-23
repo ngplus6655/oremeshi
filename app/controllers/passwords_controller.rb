@@ -17,7 +17,8 @@ class PasswordsController < ApplicationController
         if params[:account][:password] == params[:account][:password_confirmation]
           @user.password = params[:account][:password]
           if @user.save
-            redirect_to :account, notice: "パスワードを変更しました。"
+            redirect_to :account
+            flah[:info] =  "パスワードを変更しました。"
           else
             render "edit"
           end

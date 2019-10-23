@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(login_id: params[:login_id])
     if @user&.authenticate(params[:password])
       cookies.signed[:user_login_id] = @user.login_id
-      flash[:success] = "#{@user}としてログインしました。"
+      flash[:success] = "#{@user.name}としてログインしました。"
     else
       flash[:danger] = "名前とパスワードが一致しません。"
     end
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete :user_login_id
-    flash[:notice] = "ログアウトしました。"
+    flash[:info] = "ログアウトしました。"
     redirect_to :root
   end
 

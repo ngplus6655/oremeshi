@@ -19,10 +19,10 @@
 
 <div class="row no-gutters">
  <% @posts.each do |post| %>
-      <div class="mb-4 post-wrapper col-sm-6">
-          <div class="user-image clearfix bg-white">
+      <div class="mb-4 post-wrapper col-sm-6 bg-white">
+          <div class="user-image clearfix">
             <div class="posts-index-user-image float-left" 
-                 style="background-image: url(<%= avatar(post.author.avatar) %>);"></div>
+                 style="background-image: url(<%= avatar(post.author) %>);"></div>
             <h6 class="user_name float-left pt-3"><%= link_to post.author.name, "/users/#{post.author.id}" %></h6>
           </div>
           <div class="post_image" 

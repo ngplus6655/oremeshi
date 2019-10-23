@@ -228,6 +228,7 @@ div.post-show-image{
 
 p.posts-body{
   font-size: 1rem;
+  word-wrap : break-word;
 }
 
 h2.posts_show_title{
