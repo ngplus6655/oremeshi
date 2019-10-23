@@ -4,6 +4,8 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy 
 
+  has_many_attached :images
+
   validates :title, presence: true, length: { maximum: 200, allow_blank: true }
   validates :body, length: { maximum: 400 }
   validates :review, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5, allow_blank: true }

@@ -39,4 +39,13 @@ module PostsHelper
     star_icon
   end
 
+  def index_image(images)
+    if images.attached?
+        rails_blob_url(images.first) 
+    else
+        ("/assets/sk.jpg")
+    end 
+  end
+
+
 end

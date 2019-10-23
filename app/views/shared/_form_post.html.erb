@@ -17,6 +17,9 @@
   </div>
   
   <div class="form-group col-12">
+    <%= form.label :images, "画像" %><br>
+    <p>※PCの場合、Ctrlキーを押しながらファイルを複数選択できます。</p>
+    <%= form.file_field :images, multiple: true %>
   </div>
   <div class="ml-4">
     <%= form.submit "投稿する", :class => "btn btn-primary" %>

@@ -21,10 +21,12 @@
  <% @posts.each do |post| %>
       <div class="mb-4 post-wrapper col-sm-6">
           <div class="user-image clearfix bg-white">
-            <div class="posts-index-user-image float-left" style="background-image: url(/assets/sk.jpg);"></div>
+            <div class="posts-index-user-image float-left" 
+                 style="background-image: url(<%= avatar(post.author.avatar) %>);"></div>
             <h6 class="user_name float-left pt-3"><%= link_to post.author.name, "/users/#{post.author.id}" %></h6>
           </div>
-          <div class="post_image" style="background-image: url(/assets/sk.jpg);"></div>
+          <div class="post_image" 
+               style="background-image: url(<%= index_image(post.images) %>);"></div>
         <div class="container bg-white pb-3">
           <h3 class="font-weight-bold pt-2 post_title"><%= truncate(post.title, length: 50) %></h3>
           <div class="text-right">

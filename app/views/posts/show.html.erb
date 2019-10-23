@@ -3,11 +3,19 @@
 <div class="">
   <div class="description bg-white container pb-5">
   <h6 class="heading pt-4 posts_show_title font-weight-bold"><%= @post.title %></h6>
-    <div class="row">
-      <div class="col-sm-6">
-        <%= image_tag "sk.jpg", :width => "100%" %>
-      </div>
-      <div class="col-sm-6 mt-4 mt-sm-0">
+    <div class="row no-gutters">
+      <% if @post.images.attached? %>
+        <% @post.images.each do |image| %>
+          <div class="col-md-6">
+            <%= image_tag image, :width => "100%" %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-md-6">
+          <%= image_tag "sk.jpg", :width => "100%" %>
+        </div>
+      <% end %>
+      <div class="col-md-6 mt-4 mt-md-0 pl-4">
         <p class="posts-body"><%= simple_format @post.body %></p>
       </div>
     </div>
