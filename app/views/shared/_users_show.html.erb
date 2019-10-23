@@ -1,6 +1,6 @@
 <div class="py-5 bg-white container">
   <div class="user_image_bg_main_wrapper mb-5">
-    <div class="user_image_bg_main mx-auto" style="background-image: url(/assets/sk.jpg);"></div>
+    <div class="user_image_bg_main mx-auto" style="background-image: url(<%= avatar(@user.avatar) %>);"></div>
   </div>
   <div class="container">
     <h4 class="mt-2 mb-3 font-weight-bold"><%= @user.name %></h4>

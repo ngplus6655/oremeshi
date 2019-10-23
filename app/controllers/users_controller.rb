@@ -18,11 +18,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "ユーザの登録に成功しました。"
+      flash[:success] = "ユーザの登録に成功しました。"
       cookies.signed[:user_login_id] = @user.login_id
       redirect_to "/account"
     else
-      flash[:notice] = "ユーザの登録に失敗しました。"
+      flash.now[:danger] = "ユーザの登録に失敗しました。"
       render 'new'
     end
   end
@@ -34,10 +34,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:notice] = "ユーザの編集に成功しました。"
+      flash[:success] = "ユーザの編集に成功しました。"
       redirect_to @user
     else
-      flash[:notice] = "ユーザの編集に失敗しました。"
+      flash.now[:danger] = "ユーザの編集に失敗しました。"
       render 'edit'
     end
   end
@@ -45,15 +45,15 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:notice] = "ユーザを削除しました。"
+    flash[:success] = "ユーザを削除しました。"
     redirect_to '/users'
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :login_id, :password, :password_confirmation, :name, :picture, :gender, 
-                       :birthday, :prefecture, :introduce, :taste, :admin, :remove_picture)
+    params.require(:user).permit(:name, :login_id, :password, :password_confirmation, :name, :gender, 
+                       :birthday, :prefecture, :introduce, :taste, :admin, :avatar)
   end
 
 

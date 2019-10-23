@@ -11,13 +11,21 @@ class AccountsController < ApplicationController
   end
 
   def update
-    @user = currenet_user
-    @user.assign_attributes(params[:account])
+    @user = current_user
+    @user.assign_attributes(user_params)
     if @user.save
-      flash[:notice] = "プロフィールの編集を保存しました。"
+      flash[:success] = "プロフィールの編集を保存しました。"
       redirect_to :account
     else
+      flash.now[:danger] = "プロフィールの編集の保存に失敗しました。"
       render "edit"
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :login_id, :password, :password_confirmation, :name, :gender, 
+                       :birthday, :prefecture, :introduce, :taste, :admin, :avatar)
   end
 end

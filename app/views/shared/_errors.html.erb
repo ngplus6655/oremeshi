@@ -1,8 +1,8 @@
 <% if obj.errors.any? %>
   <div>
-    <ul>
+    <ul class="text-left font-weight-normal py-3 alert-warning mb-3">
       <% obj.errors.full_messages.each do |message| %>
-        <li class="text-danger"><%= message %></li>
+        <li class=""><%= message %></li>
       <% end %>
     </ul>
   </div>

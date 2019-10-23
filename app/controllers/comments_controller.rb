@@ -2,10 +2,12 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+    post_id = params[:comment][:post_id]
+    @post = Post.find(post_id)
     if @comment.save
       redirect_back(fallback_location: root_path)
     else
-      redirect_back(fallback_location: root_path)
+      render template: "posts/show"
     end
 
   end

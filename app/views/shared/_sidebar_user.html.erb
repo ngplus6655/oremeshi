@@ -1,4 +1,4 @@
-<div class="user_image_bg text-center" style="background-image: url(/assets/sk.jpg);"></div>
+<div class="user_image_bg text-center" style="background-image: url(<%= avatar(current_user.avatar) %>);"></div>
   <h4 class="mt-2 mb-3 font-weight-bold text-center side_menu_user"><%= current_user.name %></h4>
   <ul class="text-left pl-0" style="list-style: none;">
     <li class="side-menu"><%= link_to "俺飯を投稿する", :new_post %></li>

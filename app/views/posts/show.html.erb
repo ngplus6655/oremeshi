@@ -33,7 +33,7 @@
                 <div class="balloon6 mb-5 clearfix">
                   <div class="faceicon">
                     <div class="text-center text-white"><%= comment.user.name %></div>
-                    <div class="show-commented-user-image" style="background-image: url(/assets/sk.jpg);"></div>
+                    <div class="show-commented-user-image" style="background-image: url(<%= avatar(comment.user.avatar) %>);"></div>
                   </div>
                   <div class="chatting">
                     <div class="says">

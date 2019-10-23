@@ -20,10 +20,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.author = current_user
     if @post.save
-      flash[:notice] = "俺飯の投稿に成功しました。"
+      flash[:successs] = "俺飯の投稿に成功しました。"
       redirect_to @post
     else
-      flash[:notice] = "俺飯の投稿に失敗しました。"
+      flash.now[:danger] = "俺飯の投稿に失敗しました。"
       render "new"
     end
   end
@@ -35,10 +35,10 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update_attributes(post_params)
-      flash[:notice] = "#{@post.title} を編集しました。"
+      flash[:success] = "#{@post.title} を編集しました。"
       redirect_to @post
     else
-      flash[:notice] = "#{@post.title} を編集できませんでした。"
+      flash.now[:danger] = "#{@post.title} を編集できませんでした。"
       render "edit"
     end
   end
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy
-    flash[:notice] = "#{@post.title} を削除しました。"
+    flash[:success] = "#{@post.title} を削除しました。"
     redirect_to "/users/#{current_user.id}"
   end
 

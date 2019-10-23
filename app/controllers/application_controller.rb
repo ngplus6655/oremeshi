@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   def admin_required
     if current_user.nil? || !current_user.admin?
-      flash["notice"] = "権限がありません。"
+      flash["danger"] = "権限がありません。"
       redirect_to :root
     end
   end

@@ -12,11 +12,11 @@
 
   <body>
   <%= render "shared/header" %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "alert-#{name} text-#{name} text-center my-3 container py-3 rounded" %>
+    <% end %>
     <div class="container row mx-auto mt-2 p-0">
       <div class="main-wrapper-wrapper col-lg-9 bg-white rounded p-0">
-        <% if flash[:notice] %>
-        <div class="flash text-danger"><%= flash[:notice] %></div>
-        <% end %>
         <div class="main-wrapper">
           <main>  
             <%= yield %>
