@@ -26,7 +26,7 @@
         <div class="mt-3 create-time"><%= @post.updated_at.strftime("%Y-%m-%d %H:%M") %></div><br>
     <% if current_user == @post.author %>
         <%= link_to "変更する", "/posts/#{@post.id}/edit" %><br>
-        <%= link_to "削除する", @post, :method => :delete %><br>
+        <%= link_to "削除する", @post, :method => :delete, data: { confirm: '本当に削除しますか?' } %><br>
     <% end %>
       </p>
     </div>

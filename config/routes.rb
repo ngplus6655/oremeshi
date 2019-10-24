@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'contacts/index'
   get 'contacts/show'
   get 'contacts/new'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   resource :password, only: [:show, :edit, :update]
   resources :comments, only: [:create]
   resources :contacts, only: [:index, :show, :new, :create, :destroy]
+  resources :notices, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :posts
   resources :users
 end

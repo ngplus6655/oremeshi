@@ -1,0 +1,36 @@
+<% @page_title = "お知らせ管理ボード" %>
+<div class="bg-white container py-4">
+<h5 class="font-weight-bold text-center"><%= @page_title %></h5>
+
+<% if @notices.present? %>
+  <table class="table my-4">
+    <thead class="thead-dark">
+      <tr>
+        <th>お知らせ</th>
+        <th>公開日</th>
+        <th>公開終了日</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @notices.each do |notice| %>
+      <tr>
+        <td><%= simple_format notice.content %></td>
+        <td><%= notice.released_at.strftime("%Y/%m/%d") %></td>
+        <% if notice.expired_at.present? %>
+          <td><%= notice.expired_at.strftime("%Y/%m/%d")  %></td>
+        <% else %>
+          <td>期限なし</td>
+        <% end %>
+        <td><%= link_to "編集", edit_notice_path(notice) %></td>
+        <td><%= link_to "削除", notice, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>設定されたお知らせはありません。</p>
+<% end %>
+<%= link_to "新規作成", new_notice_path %>
+</div>

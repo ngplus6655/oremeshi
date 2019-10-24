@@ -2,7 +2,7 @@
 
 <p class="font-weight-bold m-0 py-3 ml-3"><%= @page_title %></p>
 <div class="container bg-white py-4">
-<%= form_for @user, as: "account", url: :password do |form| %>
+<%= form_for @user, as: "password", url: :password do |form| %>
   <%= render "shared/errors", obj: @user %>
   <div class="form-group col-lg-6">
     <%= form.label :current_password %>

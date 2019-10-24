@@ -11,26 +11,34 @@ class PasswordsController < ApplicationController
 
   def update
     @user = current_user
-    current_password = params[:account][:current_password]
+    current_password = password_params[:current_password]
     if current_password.present?
       if @user.authenticate(current_password)
-        if params[:account][:password] == params[:account][:password_confirmation]
-          @user.password = params[:account][:password]
+        if password_params[:password] == password_params[:password_confirmation]
+          @user.password = password_params[:password]
           if @user.save
             redirect_to :account
-            flah[:info] =  "パスワードを変更しました。"
+            flash[:info] =  "パスワードを変更しました。"
           else
             render "edit"
           end
         else
           @user.errors.add(:password_confirmation, :mismatching)
+          render "edit"
         end
       else
         @user.errors.add(:current_password, :wrong)
+        render "edit"
       end
     else
       @user.errors.add(:current_password, :empty)
       render "edit"
     end
   end
+
+  private
+
+    def password_params
+      params.require(:password).permit([:current_password, :password, :password_confirmation])
+    end
 end

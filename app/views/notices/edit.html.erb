@@ -1,0 +1,8 @@
+<% @page_title = "お知らせの編集" %>
+<div class="bg-white container py-4 font-weight-bold">
+<h5 class="font-weight-bold text-center"><%= @page_title %></h5>
+
+<%= form_for @notice do |f| %>
+   <%= render "notice_form", f: f %>
+<% end %>
+</div>

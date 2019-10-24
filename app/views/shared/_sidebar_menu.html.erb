@@ -5,6 +5,9 @@
         <li class="side-menu"><%= link_to "タイムライン", root_path %></li>
         <li class="side-menu"><%= link_to "ユーザー一覧", users_path %></li>
         <li class="side-menu"><a href="">comming soon.....</a></li>
+        <% if current_user.admin? %>
+          <li class="side-menu"><%= link_to "管理者ダッシュボード", admin_dashboard_path %></li>
+        <% end %>
     </ul>
   </div>
 </div>

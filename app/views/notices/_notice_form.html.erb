@@ -1,0 +1,14 @@
+<div class="form-group">
+    <%= f.label :content, "お知らせ・メッセージ" %>
+    <%= f.text_area :content, :class => "form-control form-control-sm",
+     :placeholder => "お知らせの内容を入力してください。", style: "height: 300px;" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :released_at, "公開日" %><br>
+    <%= f.date_select :released_at, :class => "form-control form-control-sm" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :expired_at, "公開期間(週) ※0を選択すると公開終了日なし(期限なし)で設定されます。" %><br>
+    <%= f.select :expired_at, [0,1,2,4,8,12,24,48], :class => "form-control form-control-sm" %>
+  </div>
+    <%= f.submit "作成", class: "btn btn-primary" %>

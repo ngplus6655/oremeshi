@@ -53,7 +53,7 @@
           <dt>編集(管理者)</dt>
           <dd><%= link_to "プロフィールの編集", :edit_account %></dd>
           <dt>削除(管理者)</dt>
-          <dd><%= link_to "ユーザの削除", @user, :method => :delete %></dd>
+          <dd><%= link_to "ユーザの削除", @user, :method => :delete, data: { confirm: '本当に削除しますか?' } %></dd>
         </dl>
       <% end %>
   </div>

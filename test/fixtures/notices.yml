@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  released_at: 2019-10-24 22:15:47
+  expired_at: 2019-10-24 22:15:47
+
+two:
+  content: MyText
+  released_at: 2019-10-24 22:15:47
+  expired_at: 2019-10-24 22:15:47
