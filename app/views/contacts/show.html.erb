@@ -1,0 +1,13 @@
+<% @page_title = "#{@contact.title}" %>
+<div class="container bg-white py-5">
+  <h3 class="heading"><%= @page_title %></h3>
+  <ul class="">
+    <%= simple_format @contact.content , class: 'posts-body' %>
+    <div class="text-right">
+      <%= @user.name %><br>
+      <%= @contact.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
+    </div>
+  </ul>
+  <%= link_to "削除する", contact_path(@contact.id), method: :delete %> |
+  <%= link_to "戻る", contacts_path %>
+</div>

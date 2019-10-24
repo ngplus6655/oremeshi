@@ -1,0 +1,21 @@
+<% @page_title = "コンタクトフォーム" %>
+
+<div class="container bg-white py-5">
+<h5 class="font-weight-bold"><%= @page_title %></h5>
+
+<p class="text-info">管理者へ何かメッセージがあれば気軽にご利用ください。バグの報告もこちらからお願いいたします。</p>
+
+<%= form_for @contact do |f| %>
+  <%= render "shared/errors", obj: @contact %>
+  <div class="form-group">
+    <%= f.label :title, "件名" %>
+    <%= f.text_field :title, :class => "form-control form-control-sm", :placeholder => "件名を入力してください。" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content, "メッセージ(400字以内)" %>
+    <%= f.text_area :content, :class => "form-control form-control-sm",
+     :placeholder => "なにかご要望があれば是非ご気軽にご利用ください。", :style => "height: 400px;" %>
+  </div>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.submit "送信", class: "btn btn-primary" %>
+<% end %>

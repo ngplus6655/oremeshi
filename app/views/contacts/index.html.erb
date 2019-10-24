@@ -1,0 +1,12 @@
+<% @page_title = "コンタクト一覧" %>
+<div class="container bg-white py-5">
+  <h3 class="heading"><%= @page_title %></h3>
+  <ul class="">
+    <% @contacts.each do |contact| %>
+      <li class="py-3">
+        <%= contact.created_at.strftime("%Y年%m月%d日") %>
+        <%= link_to contact.title, contact %>
+      </li>
+    <% end %>
+  </ul>
+</div>

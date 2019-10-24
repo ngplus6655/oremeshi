@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'contacts/index'
+  get 'contacts/show'
+  get 'contacts/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root :to => 'posts#index'
   
@@ -9,6 +12,7 @@ Rails.application.routes.draw do
   resource :account, only: [:show, :edit, :update]
   resource :password, only: [:show, :edit, :update]
   resources :comments, only: [:create]
+  resources :contacts, only: [:index, :show, :new, :create, :destroy]
   resources :posts
   resources :users
 end
