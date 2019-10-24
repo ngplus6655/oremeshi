@@ -1,0 +1,10 @@
+<% @page_title = "管理者用ページ" %>
+
+<div class="container bg-white py-4">
+<h3 class="font-weight-bold mb-4"><%= @page_title %></h3>
+  <ul>
+    <li><%= link_to "ユーザー管理", users_path %></li>
+    <li><%= link_to "メッセージ確認", contacts_path %></li>
+    <li><%= link_to "お知らせ", "#" %></li>
+  </ul>
+</div>
