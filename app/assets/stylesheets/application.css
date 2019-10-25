@@ -214,6 +214,18 @@ div.pagination > nav > span > a{
   margin: 0 5px;
 }
 
+.sns-icon{
+  font-size: 3rem;
+}
+
+.sns-icon.fa-twitter{
+  color: #55acee;
+}
+
+.sns-icon.fa-line{
+  color: #1dcd00;
+}
+
 /* //////////posts#show///////////////////////////////////////////////////////////////////////////////// */
 
 h6.posts_show_title.heading{

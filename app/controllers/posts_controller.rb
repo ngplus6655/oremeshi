@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(updated_at: "DESC").page(params[:page]).per(12)
+    @notices = Notice.where("released_at >= :date AND expired_at >= :date", :date => Date.today )
   end
 
   def show

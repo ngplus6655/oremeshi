@@ -28,7 +28,7 @@
         <%= link_to "変更する", "/posts/#{@post.id}/edit" %><br>
         <%= link_to "削除する", @post, :method => :delete, data: { confirm: '本当に削除しますか?' } %><br>
     <% end %>
-      </p>
+    </p>
     </div>
     
     <div class="post-under">
@@ -71,6 +71,16 @@
           <h5 class="text-center text-white">ログインするとコメントを残せますよ～</h5>
         <% end %>
       </div>
+    </div>
+     <div class="font-weight-bold text-center my-5">
+      <p style="font-size: 1.5rem;">SHARE</p>
+      <%= link_to "https://twitter.com/share?text=#{@post.author.name}さんの#{@post.created_at.strftime('%m月%d日')}のご飯です。&url=#{post_url}&hashtags=俺飯&images=#{@post.images.first}"  do %>
+        <i class="fab fa-twitter sns-icon mr-5"></i>
+      <% end %> 
+      
+      <%= link_to "http://line.me/R/msg/text/?#{@post.author.name}さんの#{@post.created_at.strftime('%m月%d日')}のご飯です。#{post_url}" do %>
+        <i class="fab fa-line sns-icon"></i>
+      <% end %>
     </div>
     <h6 class="heading">投稿者</h6>
     <div class="mt-5 mx-5 text-center">
