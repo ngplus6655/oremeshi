@@ -1,10 +1,10 @@
 
-<% if @notices.present? %>
+<% if @notices_side.present? %>
 <div class="side-wrapper rounded mt-4">
   <div class="sidebar-title">information</div>
   <div class="container pt-2">
       <ul class="text-left pl-0 text-info" style="list-style: none;">
-        <% @notices.each do |notice| %>
+        <% @notices_side.each do |notice| %>
          <li class="side-menu"><%= notice.content %>  (<%= notice.released_at.strftime("%Y/%m/%d") %>)</li>
       <% end %>
     </ul>

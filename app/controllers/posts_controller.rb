@@ -4,7 +4,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(updated_at: "DESC").page(params[:page]).per(12)
-    @notices = Notice.where("released_at >= :date AND expired_at >= :date", :date => Date.today )
   end
 
   def show
@@ -52,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @query =  Date.civil(params[:date][:year], params[:date][:month], params[:date][:day])
+    @query =  Date.civil(params[:date][:year], params[:date][:month].to_i, params[:date][:day].to_i)
     @posts = Post.search(@query).order(updated_at: "DESC").page(params[:page]).per(12)
     render "index"
   end
