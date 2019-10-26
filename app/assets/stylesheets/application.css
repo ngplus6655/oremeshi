@@ -157,6 +157,10 @@ span.review{
   color: rgb(253, 179, 68);
 }
 
+span.index-comment-icon{
+  font-size: 1.3rem;
+  color: rgb(2, 182, 56);
+}
 
 span.price{
   font-size: 1.2rem;
