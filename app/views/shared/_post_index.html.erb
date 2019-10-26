@@ -12,7 +12,7 @@
   </div>
  <% end %> 
  <% if controller.action_name == "search" %>
-    <% if @posts.empty? %>
+    <% if @posts.nil? %>
       <div class="text-center mb-5 mt-5 font-weight-bold">俺飯が見つかりませんでした。</div>
     <% end %>
  <% end %>
