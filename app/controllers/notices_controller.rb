@@ -3,7 +3,7 @@ class NoticesController < ApplicationController
   before_action :admin_required
 
   def index
-    @notices = Notice.all.order(:created_at, :desc)
+    @notices = Notice.all.order(created_at: "DESC")
   end
 
   def new
