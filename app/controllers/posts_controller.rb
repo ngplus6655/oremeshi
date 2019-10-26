@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @query =  Date.new(params[:date][:year].to_i, params[:date][:month].to_i, params[:date][:day].to_i)
+    @query =  "#{params[:date][:year]}-#{params[:date][:month]}-#{params[:date][:day]}")
     @posts = Post.search(@query).order(updated_at: "DESC").page(params[:page]).per(12)
     render "index"
   end
