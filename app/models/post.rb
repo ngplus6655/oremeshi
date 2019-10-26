@@ -18,7 +18,7 @@ class Post < ApplicationRecord
     def search(query)
       rel = order("title")
       if query.present?
-        rel = rel.where("created_at = ?","#{query}" )
+        rel = rel.where("created_at::date = ?","#{query}" )
       end
       rel
     end
