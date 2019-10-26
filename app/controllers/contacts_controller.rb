@@ -31,7 +31,7 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     if @contact.destroy
       flash[:success] = "メッセージを削除しました。"
-      redirect_to "index"
+      redirect_to "/contacts/index"
     end
   end
 
