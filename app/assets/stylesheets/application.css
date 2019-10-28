@@ -416,6 +416,11 @@ div.user_image_bg_main{
   background-position: center center !important;
 }
 
+div.user_image_bg_main.user_index{
+  width: 120px !important;
+  height: 120px;
+}
+
 div.user_taste{
   font-size: 0.9rem;
   float: right;

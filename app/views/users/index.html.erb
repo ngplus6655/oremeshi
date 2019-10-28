@@ -6,7 +6,7 @@
     <% @users.each do |user| %>
       <div class="index-user row bg-white text-left no-gutters">
         <div class="col-5">
-          <div class="user_image_bg_main" style="background-image: url(<%= avatar(user) %>);"></div>
+          <div class="user_image_bg_main user_index" style="background-image: url(<%= avatar(user) %>); "></div>
         </div>
           <div class="col-7 user_description">
             <h6 class="font-weight-bold mt-2"><%= user.name %>
