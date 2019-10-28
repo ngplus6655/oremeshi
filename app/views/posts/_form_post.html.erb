@@ -1,0 +1,28 @@
+<div class="form-row text-left post-form-wrap">
+  <div class="form-group col-lg-6">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, :class => "form-control form-control-sm", :placeholder => "タイトルを入力してください。" %>
+  </div>
+  <div class="form-group col-lg-6">
+    <%= f.label :price, "金額" %>
+    <%= f.text_field :price, :class => "form-control form-control-sm", :placeholder => "金額を入力してください。おおよそでいいです。" %>
+  </div>
+
+  <div class="form-group col-lg-12">
+    <%= f.label :review, "満足度" %><br>
+    <%= f.select :review, create_review_array %>
+  </div>
+  <div class="form-group col-12">
+    <%= f.label :body, "感想" %>
+    <%= f.text_area :body, :class => "form-control form-control-sm", :style => "height: 150px;", :placeholder => "ご自由にご記入ください。(空欄可)" %>
+  </div>
+  
+  <div class="form-group col-12">
+    <%= f.label :images, "画像" %><br>
+    <p>※PCの場合、Ctrlキーを押しながらファイルを複数選択できます。</p>
+    <%= f.file_field :images, multiple: true %>
+  </div>
+  <div class="ml-4">
+    <%= f.submit "投稿する", :class => "btn btn-primary" %>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <% @page_title = @user.name + "さんの編集" %>
 
 <h6 class="text-center font-weight-bold my-3"><%= @page_title %><h6>
-<%= form_for @user, html: {:class => "form_wrap pt-5 pb-5"} do |form|  %>
+<%= form_for @user, html: {:class => "form_wrap pt-5 pb-5"} do |f|  %>
   <%= render "shared/errors", obj: @user %>
-  <%= render 'shared/form_user', form: form %>
+  <%= render 'shared/form_user', f: f %>
 <% end %>
