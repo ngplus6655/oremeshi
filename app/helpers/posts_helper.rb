@@ -41,7 +41,8 @@ module PostsHelper
 
   def index_image(images)
     if images.attached?
-        rails_blob_url(images.first).variant(auto_orient: true)
+      images.first.variant(auto_orient: true)
+      rails_blob_url(images.first)
     else
         ("/assets/hakumai.png")
     end 
