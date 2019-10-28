@@ -2,7 +2,7 @@
     <div class="mr-3">
     <%= form_tag :search_posts, method: :get, class: "search" do %>
       <%= select_date date = Date.today, :start_year => 2019, :end_year => Time.now.year, prefix: :date %>
-      <%= submit_tag "俺飯日付検索" %>
+      <%= submit_tag "日付検索" %>
     <% end %>
     </div>
 </div>
