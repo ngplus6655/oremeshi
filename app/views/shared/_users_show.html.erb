@@ -51,7 +51,7 @@
       <% if current_user&.admin == true %>
         <dl>
           <dt>編集(管理者)</dt>
-          <dd><%= link_to "プロフィールの編集", :edit_user %></dd>
+          <dd><%= link_to "プロフィールの編集", "/users/#{@user.id}/edit" %></dd>
           <dt>削除(管理者)</dt>
           <dd><%= link_to "ユーザの削除", @user, :method => :delete, data: { confirm: '本当に削除しますか?' } %></dd>
         </dl>
