@@ -1,7 +1,25 @@
 <% @page_title = "俺飯一覧" %>
 
 <div class="">
-   <%= render 'shared/post_index' %>
+   <div class="font-weight-bold my-4 text-right">
+      <div class="mr-3">
+      <%= form_tag :search_posts, method: :get, class: "search" do %>
+         <%= select_date date = Date.today, :start_year => 2019, :end_year => Time.now.year, prefix: :date %>
+         <%= submit_tag "日付検索" %>
+      <% end %>
+      </div>
+   </div>
+   <% if controller.action_name == "search" %>
+   <div class ="text-center ml-3 mb-4 font-weight-bold">
+      <div><%= @query %> の検索結果</div>
+   </div>
+   <% end %> 
+   <% if controller.action_name == "search" %>
+      <% if @posts.nil? %>
+         <div class="text-center mb-5 mt-5 font-weight-bold">俺飯が見つかりませんでした。</div>
+      <% end %>
+   <% end %>
+   <%= render 'shared/post_index', obj: @posts %>
 </div>
 
 

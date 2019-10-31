@@ -1,24 +1,5 @@
-<div class="font-weight-bold my-4 text-right">
-    <div class="mr-3">
-    <%= form_tag :search_posts, method: :get, class: "search" do %>
-      <%= select_date date = Date.today, :start_year => 2019, :end_year => Time.now.year, prefix: :date %>
-      <%= submit_tag "日付検索" %>
-    <% end %>
-    </div>
-</div>
-<% if controller.action_name == "search" %>
-  <div class ="text-center ml-3 mb-4 font-weight-bold">
-    <div><%= @query %> の検索結果</div>
-  </div>
- <% end %> 
- <% if controller.action_name == "search" %>
-    <% if @posts.nil? %>
-      <div class="text-center mb-5 mt-5 font-weight-bold">俺飯が見つかりませんでした。</div>
-    <% end %>
- <% end %>
-
 <div class="row no-gutters">
- <% @posts.each do |post| %>
+ <% obj.each do |post| %>
       <div class="mb-4 post-wrapper col-sm-6 bg-white">
           <div class="user-image clearfix">
             <div class="posts-index-user-image float-left" 
@@ -31,10 +12,9 @@
           <h3 class="font-weight-bold pt-2 post_title"><%= truncate(post.title, length: 50) %></h3>
           <div class="text-right">
             <p class="post_status">
-              <%# <span class="price">金額: <i class="fas fa-yen-sign"></i><%= post.price %>
-              <%# </span><br> %> 
               <span class="review">満足度: <%= create_review_star(post).html_safe %></span><br>
               <span class="index-comment-icon"><i class="fas fa-comment"></i> <%= post.comments.length %></span>
+              <span class="index-like-icon"><i class="fas fa-heart"></i> <%= post.liked_users.count %></span>
             </p>
             <p class="link-to-show"><%= link_to "詳細ページへ", "/posts/#{post.id}" %></p>
             <p class="post_time">投稿日: <%= post.updated_at.strftime("%Y-%m-%d") %></p>
@@ -44,5 +24,5 @@
     <% end %>
 </div>
 <div class="pagination">
-  <%= paginate @posts %>
+  <%= paginate obj %>
 </div>  

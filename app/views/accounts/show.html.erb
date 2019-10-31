@@ -1,5 +1,7 @@
 <% @page_title = @user.name + "マイページ" %>
 
 <%= render "shared/users_show" %>
-<%= render "shared/post_index" %>
+
+<div class="my-4"></div>
+<%= render "shared/post_index", obj: @posts %>
 

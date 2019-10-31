@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy 
 
   has_many_attached :images
+  has_many :likes
+  has_many :liked_users, through: :likes, source: :user
 
   validates :title, presence: true, length: { maximum: 200, allow_blank: true }
   validates :body, length: { maximum: 400 }

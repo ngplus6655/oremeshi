@@ -162,6 +162,12 @@ span.index-comment-icon{
   color: rgb(2, 182, 56);
 }
 
+span.index-like-icon{
+  font-size: 1.3rem;
+  color: rgb(255, 111, 123);
+  margin-left: 25px;
+}
+
 span.price{
   font-size: 1.2rem;
   color: rgb(2, 182, 56);
@@ -228,6 +234,13 @@ div.pagination > nav > span > a{
 
 .sns-icon.fa-line{
   color: #1dcd00;
+}
+
+.liked-user-image{
+  height: 100px;
+  width: 100px;
+  background-position: center center;
+  background-size: cover;
 }
 
 /* //////////posts#show///////////////////////////////////////////////////////////////////////////////// */

@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
 
   validates :name, presence: true, length: { maximum: 15, allow_blank: true }
   validates :login_id, presence: true, uniqueness: true, length: { minimum: 3, allow_blank: true }
@@ -22,6 +24,10 @@ class User < ApplicationRecord
   def age
     date_format = "%Y%m%d"
     (Date.today.strftime(date_format).to_i - birthday&.strftime(date_format).to_i) / 10000
+  end
+
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
   end
 
 end

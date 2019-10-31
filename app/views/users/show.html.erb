@@ -1,6 +1,8 @@
 <% @page_title = @user.name + "さんの詳細ページ" %>
 
 <%= render "shared/users_show" %>
-<%= render "shared/post_index" %>
+<h5 class="text-center my-4 font-weight-bold">俺飯一覧</h5>
+<%= render "shared/post_index", obj: @posts %>
 
-
+<h5 class="text-center mb-4 font-weight-bold">Likeした俺飯</h5>
+<%= render "shared/post_index", obj: @likes %>

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @posts = Post.where(user_id: params[:id]).order(updated_at: "DESC").page(params[:page]).per(12)
+    @likes = @user.liked_posts.order(updated_at: "DESC").page(params[:page]).per(12)
   end
 
   def new

@@ -23,12 +23,33 @@
       <p class="post_status mb-0">
         <span class="price">金額: <i class="fas fa-yen-sign"></i><%= @post.price %></span><br>
         <span class="review">満足度: <%= create_review_star(@post).html_safe %></span><br>
+        <% if current_user.present? %>
+          <% if current_user.already_liked?(@post) %>
+            <%= link_to post_like_path(@post), method: :delete do %>
+              <span class="index-like-icon"><i class="fas fa-heart"></i> <%= @post.likes.count %></span><br>
+            <% end %>
+          <% else %>
+            <%= link_to post_likes_path(@post), method: :post do %>
+              <span class="index-like-icon"><i class="far fa-heart"></i> <%= @post.likes.count %></span><br>
+            <% end %>
+          <% end %>
+        <% end %>
         <div class="mt-3 create-time"><%= @post.updated_at.strftime("%Y-%m-%d %H:%M") %></div><br>
+        
     <% if current_user == @post.author %>
         <%= link_to "変更する", "/posts/#{@post.id}/edit" %><br>
         <%= link_to "削除する", @post, :method => :delete, data: { confirm: '本当に削除しますか?' } %><br>
     <% end %>
     </p>
+    </div>
+
+    <h5 class="font-weight-bold">Likeしたユーザー</h5><br>
+    <div class="container">
+      <div class="row">
+        <% @post.liked_users.each do |user| %>
+          <div class="liked-user-image" style="background-image: url(<%= avatar(user) %>);"></div>
+        <% end %>
+      </div>
     </div>
     
     <div class="post-under">
