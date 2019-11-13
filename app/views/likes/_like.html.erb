@@ -1,0 +1,15 @@
+<div id="like-link-<%= post.id %>">
+<% if current_user.present? %>
+  <% if current_user.already_liked?(post) %>
+    <%= link_to like_path(post.id), method: :delete, remote: true do %>
+      <span class="index-like-icon"><i class="fas fa-heart"></i> <%= post.likes.count %></span><br>
+    <% end %>
+  <% else %>
+    <%= link_to unlike_path(post.id), method: :post, remote: true do %>
+      <span class="index-like-icon"><i class="far fa-heart"></i> <%= post.likes.count %></span><br>
+    <% end %>
+  <% end %>
+<% else %>
+  <span class="index-like-icon"><i class="far fa-heart"></i> <%= post.likes.count %></span><br>
+<% end %>
+</div>

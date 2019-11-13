@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @comments = @post.comments
     @comment = Comment.new
+    @path = Rails.application.routes.recognize_path(request.referer)
   end
 
   def new

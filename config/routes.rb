@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   get 'admin/dashboard'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root :to => 'posts#index'
+  post '/like/:post_id' => 'likes#like', as: 'like'
+  delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
   
   resources :posts do
     get "search", on: :collection
-    resources :likes, only: [:create, :destroy]
   end
   
   resource :session, only: [:create, :destroy]

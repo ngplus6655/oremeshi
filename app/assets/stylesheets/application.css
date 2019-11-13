@@ -407,6 +407,23 @@ div.create-time{
   padding:0;
 }
 
+div.post-now-share{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 30;
+  padding: 150px 50px;
+  width: 100%;
+}
+
+.fixed-sns-icon{
+  font-size: 5rem !important;
+}
+
+.fixed-sns-icon.fa-twitter{
+  margin-right: 70px;
+}
+
 
 
 
@@ -468,3 +485,8 @@ form.form_wrap{
   color: #333;
   background-color: white;
 }
+
+
+
+
+
