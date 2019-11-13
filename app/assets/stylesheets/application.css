@@ -25,6 +25,18 @@ body{
   padding-bottom: 100px;
 }
 
+.fa-arrow-up{
+  padding: 15px;
+  color: white;
+  height: 60px !important;
+  width: 60px !important;
+  border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
 
 /* /////header///////////////////////////////////////////////////////////////////////// */
 

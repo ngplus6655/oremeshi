@@ -34,5 +34,12 @@
           <%= render 'shared/sidebar_contact' %>
       </div>
     </div>
+    <% if controller.action_name != "new" %>
+      <div class="d-block d-lg-none">
+      <%= link_to "/posts/new" do %>
+        <i class="fas fa-arrow-up bg-primary"></i>
+      <% end %>
+      </div>
+    <% end %>
   </body>
 </html>
