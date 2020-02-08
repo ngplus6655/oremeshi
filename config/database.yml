@@ -2,20 +2,20 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  # 以下、3行追加
-  username: ngplus6655 # 設定したPostgreSQL Accountと同一のもの
-  password: LocoH3131 # 設定したPostgreSQL Accountと同一のもの
-  host: localhost
+  host: db
+  username: postgres 
+  password: postgresql 
+  port: 5432
+
 development:
   <<: *default
-  database: oremeshi_development # appnameのところは、rails new時のappnameになっているはずです。
+  database: oremeshi_development 
 test:
   <<: *default
-  database: oremeshi_test # appnameのところは、rails new時のappnameになっているはずです。
+  database: oremeshi_test
 
 
 production:
-#半角スペース２個分の空白を開ける
   <<: *default
   adapter: postgresql
   encoding: unicode
