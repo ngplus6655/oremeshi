@@ -1,6 +1,4 @@
-# OREMESHI
-
-### 食事SNS   俺飯
+# 食事SNS   俺飯
 
 ## 使用技術
 Docker(開発環境)
