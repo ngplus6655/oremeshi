@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factry :user do
+  factory :user do
     name { 'テストユーザ' }
     login_id { 'test_user' }
     password { 'password' }
@@ -12,7 +12,7 @@ FactoryBot.define do
     admin { "false" }
   end
 
-  factry :admin_user, class: User do
+  factory :admin_user, class: User do
     name { 'adminユーザ' }
     login_id { 'admin_user' }
     password { 'password' }
