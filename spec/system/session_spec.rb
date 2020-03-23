@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'ログイン/ログアウト機能', type: :system do
   let(:user_a) { FactoryBot.create(:user, name: "佐藤諒") }
 
-  context "ログイン機能" do
+  describe "ログイン機能" do
     before do
       visit root_path
     end
@@ -29,7 +29,7 @@ describe 'ログイン/ログアウト機能', type: :system do
   end
 
 
-  context "ログアウト機能" do
+  describe "ログアウト機能" do
 
     before do
       visit root_path
