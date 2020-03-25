@@ -6,10 +6,7 @@ describe 'account機能', type: :system do
   describe 'アカウント詳細ページ' do
     context 'テストユーザがログインしているとき' do
       before do
-        visit root_path
-        fill_in 'ログインID：', with: user_a.login_id
-        fill_in 'パスワード：', with: user_a.password
-        click_button 'ログイン'
+        login(user_a)
       end
 
       it 'テストユーザのプロフィールが表示される' do
@@ -24,10 +21,7 @@ describe 'account機能', type: :system do
   describe 'アカウント編集ページ' do
     context 'テストユーザがログインしているとき' do
       before do
-        visit root_path
-        fill_in 'ログインID：', with: user_a.login_id
-        fill_in 'パスワード：', with: user_a.password
-        click_button 'ログイン'
+        login(user_a)
       end
 
       it 'テストユーザのプロフィールの編集が成功する' do
