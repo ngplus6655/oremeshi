@@ -3,10 +3,14 @@
     <%= f.label :name %>
     <%= f.text_field :name, :class => "form-control form-control-sm", :placeholder => "俺飯で使用する名前を入力してください。" %>
   </div>
-  <div class="form-group col-lg-6">
-    <%= f.label :login_id  %>
-    <%= f.text_field :login_id, :class => "form-control form-control-sm", :placeholder => "半角英数字3文字以上20字以内。ログイン時に使います。メモしておいてください。" %>
-  </div>
+
+  <% if !controller.controller_name == 'accounts' && !controller.action_name == 'edit' %>
+    <div class="form-group col-lg-6">
+      <%= f.label :login_id  %>
+      <%= f.text_field :login_id, :class => "form-control form-control-sm", :placeholder => "半角英数字3文字以上20字以内。ログイン時に使います。メモしておいてください。" %>
+    </div>
+  <% end %>
+
   <% if controller.controller_name == 'users' && controller.action_name == 'new' || controller.action_name == 'create' %>
     <div class="form-group col-lg-12">
       <%= f.label :password, "パスワード" %>
@@ -17,6 +21,7 @@
       <%= f.password_field :password_confirmation, :class  => "form-control form-control-sm", :placeholder => "確認用の入力欄です。もう一度同じ文字列を入力してください。" %>
     </div>
   <% end %>
+
   <div class="form-group col-lg-6">
     <%= f.label :gender %><br>
     <div class="form-check form-check-inline">
@@ -32,6 +37,7 @@
       <%= f.label :gender, "秘密にしておく", :value => "3", :class => "form-check-label" %>
     </div>
   </div>
+
   <div class="form-row col-lg-6">
     <div class="form-group">
       <%= f.label :birthday %><br>
@@ -46,10 +52,12 @@
     <%= f.label :prefecture %><br>
     <%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name %>
   </div>
+
   <div class="form-group col-12">
     <%= f.label :introduce  %>
     <%= f.text_area :introduce, rows: 7, :class => "form-control form-control-sm", :placeholder => "好きな食べ物とか？自由に書いてください" %>
   </div>
+
   <div class="form-group col-lg-6">
     <%= f.label :taste  %><br>
     <div class="form-check form-check-inline">
@@ -61,10 +69,12 @@
       <%= f.label :taste, "辛党",  :class => "form-check-label" %>
     </div>
   </div>
+
   <div class="form-group col-12">
     <%= f.label :avatar, "プロフィール画像" %><br>
     <%= f.file_field :avatar %>
   </div>
+
   <div class="form-group col-12">
   </div>
   <% if current_user&.admin == true %>
@@ -78,7 +88,8 @@
   <% else %>
       <%= f.hidden_field :admin, :value => false %>
   <% end %>
+
   <div class="ml-4">
-    <button type="submit" class="btn btn-primary">登録</button>
+    <%= f.submit "登録", class: "btn btn-primary" %>
   </div>
 </div>

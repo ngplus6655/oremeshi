@@ -1,10 +1,11 @@
 module PostsHelper
+
+  # 0~5まで0.5刻みの二次元配列を作成
   def create_review_array
-    count = 0
     array = []
-    while count <= 5
-      array.push([count.round(1).to_s, count.round(1).to_s])
-      count = count + 0.5
+    (0..10).each do |n|
+      num = n/2.to_f
+      array << [num, num]
     end
     array
   end
