@@ -86,4 +86,11 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 RSpec.configure do |config|
   config.include SystemHelper, type: :system
   config.include Session
+
+  config.verbose_retry = true
+  config.display_try_failure_messages = true
+  config.around :each, :js do |ex|
+    ex.run_with_retry retry: 5
+  end
+
 end
