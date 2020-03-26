@@ -172,4 +172,19 @@ describe '俺飯投稿機能', type: :system do
     end
   end
 
+  describe "削除機能" do
+    context "ログインしているとき" do
+      before do
+        login(user_a)
+        click_link "詳細ページへ"
+        click_link "削除する"
+        page.driver.browser.switch_to.alert.accept
+      end
+
+      it "削除に成功する" do
+        expect(page).to have_css ".alert-info"
+      end
+    end
+  end
+
 end
