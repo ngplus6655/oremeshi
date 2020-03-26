@@ -23,6 +23,12 @@ class PostsController < ApplicationController
     @post.author = current_user
     if @post.save
       flash[:success] = "俺飯の投稿に成功しました。"
+
+      CreateNotification.call(
+        contents: { 'en' => 'Post created!', 'ja' => '新しい投稿！' },
+        type: 'posts#create'
+      )
+
       redirect_to @post
     else
       flash.now[:danger] = "俺飯の投稿に失敗しました。"

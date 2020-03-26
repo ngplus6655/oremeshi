@@ -1,0 +1,40 @@
+version: '3'
+volumes:
+  postgres_data:
+  public_data:
+  tmp_data:
+  log_data:
+
+services:
+  db:
+    image: postgres:10.1
+    ports:
+      - "5432:5432"
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=postgresql"
+  
+  web:
+    build:
+      context: .
+      dockerfile: ./Docker/web/Dockerfile
+    volumes:
+      - public_data:/oremeshi/public
+      - tmp_data:/oremeshi/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - app
+      
+  app:
+    build:
+      context: .
+      dockerfile: ./Docker/app/Dockerfile
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/oremeshi
+      - public_data:/oremeshi/public
+      - tmp_data:/oremeshi/tmp
+      - log_data:/oremeshi/log
+    depends_on:
+      - db
