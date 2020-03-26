@@ -67,7 +67,7 @@ describe '俺飯投稿機能', type: :system do
   end
 
 
-  describe "新規投稿機能" do
+  describe "投稿機能" do
     context "テストユーザがログインしているとき" do
       before do
         login(user_a)
@@ -120,4 +120,56 @@ describe '俺飯投稿機能', type: :system do
       end
     end
   end
+
+
+  describe "編集機能" do
+    context " テストユーザがログインしているとき" do
+      before do
+        login(user_a)
+        click_link "詳細ページへ"
+        click_link "変更する"
+      end
+
+      context "有効なデータを入力する" do
+        before do
+          fill_in "タイトル", with: "編集済みタイトル"
+          fill_in "金額", with: 100
+          click_button "投稿する"
+        end
+
+        it "編集に成功する" do
+          expect(page).to have_css ".alert-success"
+          expect(page).to have_content "編集済みタイトル"
+          expect(page).to have_content "100"
+        end
+      end
+
+      context "無効なデータを入力する" do
+        before do
+          fill_in "タイトル", with: ""
+          fill_in "金額", with: ""
+          click_button "投稿する"
+        end
+
+        it "編集に失敗する" do
+          expect(page).to have_css ".alert-danger"
+          expect(page).to have_content "タイトルを入力してください"
+          expect(page).to have_content "金額を入力してください"
+        end
+      end
+    end
+
+    context "ログインしていないとき" do
+      before do
+        visit edit_post_url(post_1)
+      end
+
+      it "編集に失敗する" do
+        expect(page).not_to have_button "投稿する"
+        expect(page).not_to have_button "タイトル"
+        expect(page).to have_css ".alert-info"
+      end
+    end
+  end
+
 end
