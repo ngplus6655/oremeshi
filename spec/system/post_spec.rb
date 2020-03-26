@@ -64,6 +64,60 @@ describe '俺飯投稿機能', type: :system do
         expect(page).to have_content "削除する"
       end
     end       
-    
+  end
+
+
+  describe "新規投稿機能" do
+    context "テストユーザがログインしているとき" do
+      before do
+        login(user_a)
+      end
+
+      context "有効なデータを入力する" do
+        before do
+          click_on "俺飯を投稿する"
+          fill_in "タイトル", with: "テスト用のポスト"
+          fill_in "金額", with: 1999
+          select "4.5", from: "post_review"
+          fill_in "感想", with: "今までで一番おいしい食べ物だった！"
+          attach_file '画像',
+         "#{Rails.root}/spec/factories/profile_image.jpg" 
+          click_button "投稿する"
+        end
+
+        it "投稿に成功する" do
+          expect(page).to have_content "テスト用のポスト"
+          expect(page).to have_content 1999
+        end
+      end
+
+      context "無効なデータを入力する" do
+        before do
+          click_on "俺飯を投稿する"
+          fill_in "タイトル", with: ""
+          fill_in "金額", with: ""
+          select "4.5", from: ""
+          fill_in "感想", with: ""
+          click_button "投稿する"
+        end
+
+        it "投稿に失敗する" do
+          expect(page).to have_css ".alert-danger"
+          expect(page).to have_content "タイトルを入力してください"
+          expect(page).to have_content "金額を入力してください"
+        end
+      end
+    end
+
+    context "ログインユーザが存在しないとき" do
+      before do
+        visit new_post_path
+      end
+
+      it "投稿ページを表示しない" do
+        expect(page).not_to have_button "投稿する"
+        expect(page).to have_css ".alert-info"
+      end
+    end
   end
 end
