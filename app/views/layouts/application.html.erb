@@ -10,7 +10,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag('hakumai.png') %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-  </head>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      var OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "b6e1c706-6344-44e2-a8d9-30f1edef4124",
+        });
+      });
+    </script>
+ </head>
 
   <body>
   <%= render "shared/header" %>
@@ -41,5 +50,6 @@
       <% end %>
       </div>
     <% end %>
+
   </body>
 </html>
