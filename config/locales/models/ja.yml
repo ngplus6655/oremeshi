@@ -17,7 +17,7 @@ ja:
         admin: 管理者
         current_password: 現在のパスワード
         password: 新しいパスワード
-        password_confirmation: 新しいパスワードの確認
+        password_confirmation: 新しいパスワード(確認)
       post:
         title: タイトル
         price: 金額
@@ -29,4 +29,4 @@ ja:
     messages:
       blank_picture: "がアップロードされていません。"
       wrong: がただしくありません。
-      mismatching: "が一致していません。"
+      mismatching: "と新しいパスワードの値が一致していません。"
