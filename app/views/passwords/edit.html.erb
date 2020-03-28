@@ -2,21 +2,22 @@
 
 <p class="font-weight-bold m-0 py-3 ml-3"><%= @page_title %></p>
 <div class="container bg-white py-4">
-<%= form_for @user, as: "password", url: :password do |form| %>
+<%= form_with model: @user, scope: :password, url: password_path,
+ local: true do |f| %>
   <%= render "shared/errors", obj: @user %>
   <div class="form-group col-lg-6">
-    <%= form.label :current_password %>
-    <%= form.password_field :current_password, :class => "form-control form-control-sm" %>
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password, :class => "form-control form-control-sm" %>
   </div>
   <div class="form-group col-lg-6">
-    <%= form.label :password %>
-    <%= form.password_field :password, :class => "form-control form-control-sm" %>
+    <%= f.label :password %>
+    <%= f.password_field :password, :class => "form-control form-control-sm" %>
   </div>
   <div class="form-group col-lg-6">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, :class => "form-control form-control-sm" %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => "form-control form-control-sm" %>
   </div>
-  <div><%= form.submit "変更" %></div>
+  <div><%= f.submit "変更" %></div>
 <% end %>
 <div class="text-right">
   <%= link_to "マイページへ戻る", :account %>

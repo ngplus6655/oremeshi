@@ -12,22 +12,38 @@ class PasswordsController < ApplicationController
   def update
     @user = current_user
     current_password = password_params[:current_password]
+    password = password_params[:password]
+    password_confirmation = password_params[:password_confirmation]
+
+    # いづれかの項目に空欄があった場合エラーを出力
     if current_password.present?
-      if @user.authenticate(current_password)
-        if password_params[:password] == password_params[:password_confirmation]
-          @user.password = password_params[:password]
-          if @user.save
-            redirect_to :account
-            flash[:info] =  "パスワードを変更しました。"
+      if password.present?
+        if password_confirmation.present?
+
+          if @user.authenticate(current_password)
+            if password == password_confirmation
+              @user.password = password
+              if @user.save
+                redirect_to :account
+                flash[:success] =  "パスワードを変更しました。"
+              else
+                render "edit"
+              end
+            else
+              @user.errors.add(:password_confirmation, :mismatching)
+              render "edit"
+            end
           else
+            @user.errors.add(:current_password, :wrong)
             render "edit"
           end
+
         else
-          @user.errors.add(:password_confirmation, :mismatching)
+          @user.errors.add(:password_confirmation, :empty)
           render "edit"
         end
       else
-        @user.errors.add(:current_password, :wrong)
+        @user.errors.add(:password, :empty)
         render "edit"
       end
     else
