@@ -32,9 +32,10 @@ services:
       dockerfile: ./Docker/app/Dockerfile
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/oremeshi
-      - public_data:/oremeshi/public
-      - tmp_data:/oremeshi/tmp
-      - log_data:/oremeshi/log
+      - .:/root/oremeshi
+      - public_data:/root/oremeshi/public
+      - tmp_data:/root/oremeshi/tmp
+      - log_data:/root/oremeshi/log
     depends_on:
       - db
+    tty: true
