@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '俺飯投稿機能', type: :system do
+describe '俺飯投稿機能', type: :system, js: true do
   let(:user_a) { FactoryBot.create(:user, name: "佐藤諒") }
   let!(:post_1) { FactoryBot.create(:post, author: user_a) }
 
@@ -75,7 +75,7 @@ describe '俺飯投稿機能', type: :system do
 
       context "有効なデータを入力する" do
         before do
-          click_on "俺飯を投稿する"
+          click_on "俺飯を投稿する", match: :first
           fill_in "タイトル", with: "テスト用のポスト"
           fill_in "金額", with: 1999
           select "4.5", from: "post_review"
@@ -93,7 +93,7 @@ describe '俺飯投稿機能', type: :system do
 
       context "無効なデータを入力する" do
         before do
-          click_on "俺飯を投稿する"
+          click_on "俺飯を投稿する", match: :first
           fill_in "タイトル", with: ""
           fill_in "金額", with: ""
           select "4.5", from: ""
@@ -176,8 +176,8 @@ describe '俺飯投稿機能', type: :system do
     context "ログインしているとき" do
       before do
         login(user_a)
-        click_link "詳細ページへ"
-        click_link "削除する"
+        click_on "詳細ページへ"
+        click_on "削除する"
         page.driver.browser.switch_to.alert.accept
       end
 

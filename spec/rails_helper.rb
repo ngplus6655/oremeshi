@@ -4,6 +4,25 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)
 
+# screenshotが真っ白になる問題を解決
+module SystemHelper
+  extend ActiveSupport::Concern
+
+  included do |example_group|
+    # Screenshots are not taken correctly
+    # because RSpec::Rails::SystemExampleGroup calls after_teardown before before_teardown
+    example_group.after do
+      take_failed_screenshot
+    end
+  end
+
+  def take_failed_screenshot
+    return if @is_failed_screenshot_taken
+    super
+    @is_failed_screenshot_taken = true
+  end
+end
+
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
@@ -22,7 +41,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -60,30 +79,13 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-end
-
-# screenshotが真っ白になる問題を解決
-module SystemHelper
-  extend ActiveSupport::Concern
-
-  included do |example_group|
-    # Screenshots are not taken correctly
-    # because RSpec::Rails::SystemExampleGroup calls after_teardown before before_teardown
-    example_group.after do
-      take_failed_screenshot
-    end
+  config.before(:each, type: :system) do
+    driven_by :rack_test
   end
-
-  def take_failed_screenshot
-    return if @is_failed_screenshot_taken
-    super
-    @is_failed_screenshot_taken = true
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_headless
   end
-end
-
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
-
-RSpec.configure do |config|
+  
   config.include SystemHelper, type: :system
   config.include Session
 
