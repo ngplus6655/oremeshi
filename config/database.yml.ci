@@ -1,0 +1,9 @@
+test:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username: postgres 
+  password: postgresql 
+  port: 5432
+  database: oremeshi_test
