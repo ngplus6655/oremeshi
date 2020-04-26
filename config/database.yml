@@ -13,6 +13,7 @@ development:
 test:
   <<: *default
   database: oremeshi_test
+  host: localhost
 
 
   production:
